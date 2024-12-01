@@ -8,13 +8,16 @@
     <style>
         body {
             background-image: url(zydzi.jpg);
+            background-size: cover; 
+            background-position: center; 
+            background-attachment: fixed;
             margin: 0;
             padding: 0;
-            min-height: 100vh;
+            min-height: 100vh; 
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;
-            align-items: center;
+            justify-content: flex-end; 
+            align-items: center; 
         }
 
         img {
@@ -43,30 +46,19 @@
             font-weight: bold;
         }
 
-        .bottom-image {
-            width: 100%; 
-            max-width: 500px;
-            height: auto;
-            cursor: pointer;
-            transition: transform 0.3s ease;
+       .bottom-image {
+            width: 300px; 
+            height: auto; 
+            cursor: pointer; 
+            margin-bottom: 20px; 
+            transition: transform 0.3s ease; 
         }
 
         
         .bottom-image:hover {
             transform: scale(1.1); 
         }
-
        
-        @media (max-width: 768px) {
-            .moving-text {
-                font-size: 1.5em; 
-            }
-
-            .bottom-image {
-                width: 80%; 
-                max-width: 400px;
-            }
-        }
     </style>
 </head>
 <body>
