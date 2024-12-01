@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jebac murzynów</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-image: url('https://przystanekhistoria.pl/dokumenty/zalaczniki/166/166-165376.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            color: white;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+        }
+
+        .moving-text {
+            position: absolute;
+            font-size: 2em;
+            white-space: nowrap;
+        }
+        a{
+            text-shadow: 2px 6px 7px orange;
+            text-shadow: 2px 6px 7px red;
+            font-weight: 900;
+            font-size: larger;
+            font-family:Georgia, 'Times New Roman', Times, serif
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <a id="text" class="moving-text">JEBAC CZARNUCHOW</a>
+    <script>
+        const text = document.getElementById('text');
+        const speed =5; 
+        let positionX = window.innerWidth - text.offsetWidth;
+        let positionY = 0;
+        let directionX = -1; 
+        let directionY = 1; 
+
+        function moveText() {
+            
+            positionX += directionX * speed;
+            positionY += directionY * speed;
+
+           
+            if (positionX <= 0 || positionX + text.offsetWidth >= window.innerWidth) {
+                directionX *= -1; 
+            }
+            if (positionY <= 0 || positionY + text.offsetHeight >= window.innerHeight) {
+                directionY *= -1; 
+            }
+
+            
+            text.style.left = positionX + 'px';
+            text.style.top = positionY + 'px';
+
+            
+            requestAnimationFrame(moveText);
+        }
+
+        
+        moveText();
+    </script>
+</body>
+</html>
