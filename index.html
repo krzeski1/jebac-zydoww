@@ -1,92 +1,104 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ŻYDZI DO NIEWOLI</title>
     <link rel="stylesheet" href="style.css">
     <style>
-    body {
-        background-image: url(zydzi.jpg);
-        margin: 0;
-        padding: 0;
-        min-height: 100vh; 
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end; 
-        align-items: center; 
-    }
-        img {
-      width: 150px;
-      height: auto; 
+        body {
+            background-image: url(zydzi.jpg);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
         }
-    .moving-text {
-        position: absolute;
-        font-size: 2em;
-        white-space: nowrap;
-    }
-    a{
-        text-shadow: 2px 6px 7px orange;
-        text-shadow: 2px 6px 7px red;
-        font-weight: 900;
-        font-size: larger;
-        font-family:Georgia, 'Times New Roman', Times, serif
-    }
-    .link {
-        text-decoration: none; 
-        color: red;  
-        font-weight: bold; 
-    }
-    .bottom-image {
-        width: 500px; 
-        height: auto; 
-        cursor: pointer;
-        transition: transform 0.3s ease; 
-    }
-    
-    
-    .bottom-image:hover {
-        transform: scale(1.1); 
-    }
-    
-    .bottom-image:hover {
-        transform: scale(1.1); 
-    }</style>
-</head>
-<body>
-    
-    <a href="https://www.youtube.com/watch?v=XqD2Kc4xpT4"><img src="obraz_2024-12-01_231852811-removebg-preview.png" alt="praca czyni wolnym" class="bottom-image"></a>
-    <a id="text" class="moving-text">PALIĆ ŻYDÓW</a>
-    <script>
-        const text = document.getElementById('text');
-        const speed =2; 
-        let positionX = window.innerWidth - text.offsetWidth;
-        let positionY = 0;
-        let directionX = -1; 
-        let directionY = 1; 
 
-        function moveText() {
+        img {
+            width: 100%; 
+            max-width: 500px; 
+            height: auto;
+        }
+
+        .moving-text {
+            position: absolute;
+            font-size: 2em;
+            white-space: nowrap;
             
-            positionX += directionX * speed;
-            positionY += directionY * speed;
+        }
 
-           
-            if (positionX <= 0 || positionX + text.offsetWidth >= window.innerWidth) {
-                directionX *= -1; 
-            }
-            if (positionY <= 0 || positionY + text.offsetHeight >= window.innerHeight) {
-                directionY *= -1; 
-            }
+        a {
+            text-shadow: 2px 6px 7px orange, 2px 6px 7px red;
+            font-weight: 900;
+            font-size: larger;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
 
-            
-            text.style.left = positionX + 'px';
-            text.style.top = positionY + 'px';
+        .link {
+            text-decoration: none;
+            color: red;
+            font-weight: bold;
+        }
 
-            
-            requestAnimationFrame(moveText);
+        .bottom-image {
+            width: 100%; 
+            max-width: 500px;
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.3s ease;
         }
 
         
+        .bottom-image:hover {
+            transform: scale(1.1); 
+        }
+
+       
+        @media (max-width: 768px) {
+            .moving-text {
+                font-size: 1.5em; 
+            }
+
+            .bottom-image {
+                width: 80%; 
+                max-width: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="https://www.youtube.com/watch?v=XqD2Kc4xpT4">
+        <img src="obraz_2024-12-01_231852811-removebg-preview.png" alt="praca czyni wolnym" class="bottom-image">
+    </a>
+    <a id="text" class="moving-text">PALIĆ ŻYDÓW</a>
+    <script>
+        const text = document.getElementById('text');
+        const speed = 2;
+        let positionX = window.innerWidth - text.offsetWidth;
+        let positionY = 0;
+        let directionX = -1;
+        let directionY = 1;
+
+        function moveText() {
+            positionX += directionX * speed;
+            positionY += directionY * speed;
+
+            if (positionX <= 0 || positionX + text.offsetWidth >= window.innerWidth) {
+                directionX *= -1;
+            }
+            if (positionY <= 0 || positionY + text.offsetHeight >= window.innerHeight) {
+                directionY *= -1;
+            }
+
+            text.style.left = positionX + 'px';
+            text.style.top = positionY + 'px';
+
+            requestAnimationFrame(moveText);
+        }
+
         moveText();
     </script>
 </body>
